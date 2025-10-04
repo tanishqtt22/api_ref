@@ -1,0 +1,15 @@
+# render.yaml for Meteor/Asteroid Trajectory API
+
+services:
+  - type: web
+    name: meteor-trajectory-api
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: NASA_API_KEY
+        value: "MwfPBwoFvtIiQXrn41tXzIW5AtxBxGl5PXH6lVCZ"  # Replace if needed
+    autoDeploy: true
+    instanceType: starter
